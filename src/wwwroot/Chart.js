@@ -247,6 +247,11 @@ export function chartSetup(id, dotnetConfig, jsonConfig) {
     };
 }
 
+export function update(id) {
+    var chart = Chart.getChart(id);
+    chart.update();
+}
+
 export function addData(id, label, dataset, data) {
     var chart = Chart.getChart(id);
 
