@@ -112,6 +112,11 @@ namespace PSC.Blazor.Components.Chartjs
 
         #region Public functions
 
+        public async void SetData<T>(List<string?> labels, List<T> data) where T : class
+        {
+            await JSModule.SetData(Config.CanvasId, labels, data);
+        }
+
         public async void AddData(List<string?> labels, int datasetIndex, List<decimal?> data) 
         {
             await JSModule.AddData(Config.CanvasId, labels, datasetIndex, data);

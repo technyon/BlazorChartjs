@@ -252,6 +252,17 @@ export function update(id) {
     chart.update();
 }
 
+export function setData(id, labels, data) {
+    var chart = Chart.getChart(id);
+
+    for (let i = 0; i < data.length; i++) {
+        chart.data.datasets[i].data = data[i];
+    }
+    chart.data.labels = labels;
+
+    chart.update();
+}
+
 export function addData(id, label, dataset, data) {
     var chart = Chart.getChart(id);
 

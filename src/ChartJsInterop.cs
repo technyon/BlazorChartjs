@@ -20,6 +20,12 @@ namespace PSC.Blazor.Components.Chartjs
             await module.InvokeVoidAsync("chartSetup", Config.CanvasId, dotNetObjectRef, Config);
         }
 
+        public async ValueTask SetData<T>(string CanvasId, List<string> labels, List<T> data) where T : class
+        {
+            var module = await moduleTask.Value;
+            await module.InvokeVoidAsync("setData", CanvasId, labels, data);
+        }
+
         public async ValueTask AddData(string CanvasId, List<string> labels, int datasetIndex, List<decimal?> data) 
         {
             var module = await moduleTask.Value;
@@ -30,12 +36,6 @@ namespace PSC.Blazor.Components.Chartjs
         {
             var module = await moduleTask.Value;
             await module.InvokeVoidAsync("addNewDataset", CanvasId, dataset);
-        }
-
-        public async ValueTask Update(string CanvasId)
-        {
-            var module = await moduleTask.Value;
-            await module.InvokeVoidAsync("update", CanvasId);
         }
     }
 }
